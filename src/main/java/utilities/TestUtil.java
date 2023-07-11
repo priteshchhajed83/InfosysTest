@@ -14,9 +14,6 @@ public class TestUtil {
     public static FileInputStream file;
     public static Workbook book;
 
-
-
-
     public static HashMap<String, String> getDataFromExcel(String testID)  {
         List<String> allColumns = new ArrayList<>();
         List<String> columnData = new ArrayList<>();
@@ -37,22 +34,6 @@ public class TestUtil {
              desiredRow) {
             allColumns.add(columns.toString());
         }
-//        Iterator<Cell> columns= desiredRow.cellIterator();
-//        while(columns.hasNext()){
-//            allColumns.add(columns.next().toString());
-//        }
-
-//        Iterator<Row> rows = sheetName.rowIterator();
-//        while (rows.hasNext()){
-//            Row row = rows.next();
-//            columnData = readValues(row);
-//            testData = addData(allColumns, columnData);
-//            if(testData.get("TestID").equalsIgnoreCase(testID))
-//                break;
-//            else{
-//                clearData(testData,columnData);
-//            }
-//        }
 
         for (Row rows: sheetName
              ) {
@@ -79,15 +60,6 @@ public class TestUtil {
         while (columnNames.hasNext() && rowValues.hasNext()){
             data.put(columnNames.next(), rowValues.next().trim());
         }
-
-//        for (String columnNames: allColumns
-//             ) {
-//            for (String rowValues: columnData
-//                 ) {
-//                data.put(columnNames, rowValues);
-//            }
-//
-//        }
         return data;
     }
 
@@ -98,5 +70,5 @@ public class TestUtil {
             allColumnsValues.add(columns.next().toString());
         }
         return allColumnsValues;
-    }
+        }
     }

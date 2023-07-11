@@ -70,23 +70,7 @@ public class CommonFunctions {
 	public void sendKeysSafelyJS(WebElement ele, String text) {
 		js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView();", ele);
-		js.executeScript("window.focus();");
-//		js.executeScript("arguments[0].setAttribute('value', '"+ ""+"')", ele);
 		js.executeScript("arguments[0].setAttribute('value', '" + text + "')", ele);
-	}
-
-	/**
-	 * take screenshot
-	 *
-	 */
-	public void takeScreenshot() {
-		File scrnFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String currentDir = System.getProperty("user.dir");
-		try {
-			FileUtils.copyFile(scrnFile, new File(currentDir + "/screenshots" + formatTimeSDF() + ".png"));
-		} catch (IOException e) {
-			log.error("Exception in takeScreenshot method: " + e.getMessage());
-		}
 	}
 
 	/**
@@ -94,7 +78,7 @@ public class CommonFunctions {
 	 *
 	 * @param testName
 	 */
-	public void takeScreenshot(String testName) {
+	public void takeScreenshotByName(String testName) {
 		File scrnFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String currentDir = System.getProperty("user.dir");
 		try {
@@ -104,16 +88,6 @@ public class CommonFunctions {
 			log.error("Exception in takeScreenshot method: " + e.getMessage());
 		}
 	}
-
-	/**
-	 * format date/time
-	 *
-	 * @return - String
-	 */
-	public static String formatTimeSDF() {
-		return new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format(new Date());
-	}
-
 
 	public void setValues(WebElement ele, String value){
 		String elementType = ele.getAttribute("type");

@@ -6,7 +6,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.CommonFunctions;
-import utilities.TestUtil;
 
 import java.util.HashMap;
 
@@ -15,7 +14,6 @@ public class preRetirementCalculatorPage {
 
     private WebDriver driver;
     CommonFunctions functions;
-    TestUtil testUtil;
     private Logger log = LogManager.getLogger(this.getClass());
 
     @FindBy(id="current-age")
@@ -87,7 +85,6 @@ public class preRetirementCalculatorPage {
     public preRetirementCalculatorPage(WebDriver driver){
         this.driver = driver;
         functions = new CommonFunctions(driver);
-//        testUtil = new TestUtil();
         PageFactory.initElements(driver, this);
     }
 

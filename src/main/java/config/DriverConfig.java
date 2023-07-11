@@ -18,17 +18,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverConfig {
 	private WebDriver driver;
-
-
 	Properties props = new Properties();
 	private Logger log = LogManager.getLogger(this.getClass());
 
-	// resource paths
 	private final String propsFilepath = "/resources/config.properties";
 
 	/**
 	 * initialize driver
-	 * 
 	 * @return - WebDriver
 	 */
 	public WebDriver initializeDriver() {
@@ -38,12 +34,10 @@ public class DriverConfig {
 			switch (getBrowser()) {
 				case "chrome":
 					WebDriverManager.chromedriver().setup();
-//			SeleniumManager.getInstance();
 					driver = new ChromeDriver();
 					break;
 				case "firefox":
 					WebDriverManager.firefoxdriver().setup();
-//			SeleniumManager.getInstance();
 					driver = new FirefoxDriver();
 					break;
 				case "edge":
@@ -51,14 +45,13 @@ public class DriverConfig {
 					driver = new EdgeDriver();
 					break;
 				default:
-					log.fatal("Invalid browser/browser config doesnt exist");
+					log.fatal("Invalid browser/browser config doesn't exist");
 			}
 			log.debug("Driver initialized");
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
 			driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-//			extentReportClass.report = new ExtentReports(reportPath+this.getClass().getSimpleName()+".html", false);
 			String url = getUrl("url");
 			log.info("Launching URL: " + url);
 			driver.get(url);
@@ -70,8 +63,7 @@ public class DriverConfig {
 	}
 
 	/**
-	 * load properties file
-	 * 
+	 * load properties file	 *
 	 */
 	public void loadProperty() {
 		try {

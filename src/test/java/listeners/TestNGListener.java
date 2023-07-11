@@ -4,11 +4,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
-import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import org.testng.TestListenerAdapter;
-import report.extentReportClass;
 import utilities.CommonFunctions;
 
 
@@ -34,8 +32,7 @@ public class TestNGListener extends TestListenerAdapter {
 		}
 
 		functions = new CommonFunctions(driver);
-		functions.takeScreenshot(result.getName());// take screenshot with test name
-//		functions.takeScreenshot();
+		functions.takeScreenshotByName(result.getName());// take screenshot with test name
 		log.info("Success Test Pass");
 	}
 
@@ -48,7 +45,7 @@ public class TestNGListener extends TestListenerAdapter {
 		}
 
 		functions = new CommonFunctions(driver);
-		functions.takeScreenshot(result.getName());// take screenshot with test name
+		functions.takeScreenshotByName(result.getName());// take screenshot with test name
 
 	}
 

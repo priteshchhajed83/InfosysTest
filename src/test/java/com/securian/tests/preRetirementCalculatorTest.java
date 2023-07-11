@@ -8,7 +8,6 @@ import org.testng.annotations.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import report.extentReportClass;
 import utilities.TestUtil;
 
 import java.util.HashMap;
@@ -22,7 +21,7 @@ public class preRetirementCalculatorTest extends DriverConfig {
 
 //    public static String testID;
 
-    extentReportClass extentReport;
+//    extentReportClass extentReport;
 
     public static HashMap<String, String> testData = new HashMap<>();
 
@@ -35,14 +34,14 @@ public class preRetirementCalculatorTest extends DriverConfig {
 
     public preRetirementCalculatorTest(){
 //        this.testID = testID;
-        extentReport = new extentReportClass();
+//        extentReport = new extentReportClass();
     }
 
     @BeforeTest
     public void setup(){
         driver = initializeDriver();
         testData = TestUtil.getDataFromExcel(testID);
-        extentReport.startReport(testID);
+//        extentReport.startReport(testID);
     }
 
     @Test
@@ -51,7 +50,7 @@ public class preRetirementCalculatorTest extends DriverConfig {
             preRetirementCalculatorPage page = new preRetirementCalculatorPage(driver);
             String actualResult = page.createPlan(testData);
             Assert.assertEquals(expResult, actualResult, "There is different output we got");
-            extentReport.testPass();
+//            extentReport.testPass(testID);
         }catch (Exception e){
             log.error("Exception in takeScreenshot method: " + e.getMessage());
         }
@@ -61,7 +60,7 @@ public class preRetirementCalculatorTest extends DriverConfig {
 
     @AfterTest
     public void tearDown(){
-        extentReport.endReport();
+//        extentReport.endReport();
         driver.close();
     }
 }
